@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+  <include file='$(find protobot_dog_description)/launch/gazebo.launch'/>
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find protobot_dog_simulation)/config/protobot_dog_controller.yaml" command="load"/>
+
+  <!-- load the controllers --><!-- ns="$(arg ns)"-->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
+				args="rf_upper_joint_position_controller
+							rf_lower_joint_position_controller
+							lf_upper_joint_position_controller
+							lf_lower_joint_position_controller
+							rb_upper_joint_position_controller
+							rb_lower_joint_position_controller
+							lb_upper_joint_position_controller
+							lb_lower_joint_position_controller
+							joint_state_controller"/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <!--remap from="/joint_states" to="$(arg ns)/joint_states" /-->
+  </node>
+  <node name='rviz' pkg='rviz' type='rviz' args='-d $(find protobot_dog_simulation)/sim.rviz'/>
+</launch>

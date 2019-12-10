@@ -1,0 +1,15 @@
+<?xml version='1.0'?>
+<launch>
+    <group ns='rf'>
+        <node name='leg_ik_node' pkg='protobot_dog_leg_ik' type='protobot_dog_leg_ik_node' output="screen"/>
+    </group>
+    <group ns='rb'>
+        <node name='leg_ik_node' pkg='protobot_dog_leg_ik' type='protobot_dog_leg_ik_node' output="screen"/>
+    </group>
+    <group ns='lf'>
+        <node name='leg_ik_node' pkg='protobot_dog_leg_ik' type='protobot_dog_leg_ik_node' output="screen"/>
+    </group>
+    <group ns='lb'>
+        <node name='leg_ik_node' pkg='protobot_dog_leg_ik' type='protobot_dog_leg_ik_node' output="screen"/>
+    </group>
+</launch>
