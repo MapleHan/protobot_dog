@@ -1,0 +1,50 @@
+<?xml version='1.0'?>
+<robot name='protobot_dog' xmlns:xacro='http://ros.org/wiki/xacro'>
+  <gazebo>
+    <plugin name='ros_control' filename='libgazebo_ros_control.so'>
+      <!--robotNamespace>/</robotNamespace-->
+      <!--robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType-->
+    </plugin>
+  </gazebo>
+
+  <xacro:macro name='joint_trans' params='prefix'>
+    <transmission name="${prefix}_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${prefix}">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="${prefix}_motor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+  <joint_trans prefix='rf_upper_joint'/>
+  <joint_trans prefix='rf_lower_joint'/>
+  <joint_trans prefix='lf_upper_joint'/>
+  <joint_trans prefix='lf_lower_joint'/>
+  <joint_trans prefix='rb_upper_joint'/>
+  <joint_trans prefix='rb_lower_joint'/>
+  <joint_trans prefix='lb_upper_joint'/>
+  <joint_trans prefix='lb_lower_joint'/>
+
+  <xacro:macro name='link_property' params='link_name'>
+    <gazebo reference="${link_name}">
+      <mu1>1</mu1>
+      <mu2>1</mu2>
+      <kp>100000</kp>
+      <kd>1.0</kd>
+    </gazebo>
+  </xacro:macro>
+
+  <link_property link_name='rf_upper_link'/>
+  <link_property link_name='rf_lower_link'/>
+  <link_property link_name='lf_upper_link'/>
+  <link_property link_name='lf_lower_link'/>
+  <link_property link_name='rb_upper_link'/>
+  <link_property link_name='rb_lower_link'/>
+  <link_property link_name='lb_upper_link'/>
+  <link_property link_name='lb_lower_link'/>
+  <link_property link_name='base_link'/>
+</robot>

@@ -1,0 +1,14 @@
+<?xml version='1.0'?>
+<launch>
+  <arg name="paused" default="true"/>
+  <param name='robot_description' command="$(find xacro)/xacro '$(find protobot_dog_description)/urdf/protobot_dog.urdf.xacro'"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="$(arg paused)"/>
+  </include>
+  <node
+    name="spawn_model"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args=" -urdf -param robot_description -model protobot_dog"
+    output="screen" />
+</launch>

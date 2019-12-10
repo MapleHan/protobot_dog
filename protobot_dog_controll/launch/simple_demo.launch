@@ -1,0 +1,4 @@
+<?xml version='1.0'?>
+<launch>
+  <node name='simple_demo' pkg='protobot_dog_controll' type='simple_demo.py' output='screen'/>
+</launch>

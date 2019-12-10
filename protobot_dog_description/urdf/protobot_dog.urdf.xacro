@@ -1,0 +1,130 @@
+<?xml version='1.0'?>
+<robot name='protobot_dog' xmlns:xacro='http://ros.org/wiki/xacro'>
+  <xacro:include filename='protobot_dog.gazebo.xacro'/>
+  <link name='base_footprint'/>
+  <link name='base_link'>
+    <inertial>
+      <origin xyz='0 0 0' rpy='0 0 0'/>
+      <mass value='5.5049218e+00'/>
+      <inertia ixx='2.7204475e-02' ixy='0' ixz='0' iyy='1.0887486e-01' iyz='0' izz='1.2349825e-01'/>
+    </inertial>
+    <visual>
+      <origin xyz='0 0 0.005' rpy='0 0 3.141593'/>
+      <geometry>
+        <mesh filename='package://protobot_dog_description/meshes/base_link.dae'/>
+      </geometry>
+      <material name=''>
+        <color rgba='1 1 1 1'/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz='0 0 0' rpy='0 0 0'/>
+      <geometry>
+        <mesh filename='package://protobot_dog_description/meshes/base_link.stl'/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name='base_joint' type='fixed'>
+    <origin xyz='0 0 0.353' ryy='0 0 0'/>
+    <parent link='base_footprint'/>
+    <child link='base_link'/>
+  </joint>
+
+  <xacro:macro name='leg_link' params='prefix'>
+    <link name='${prefix}_upper_link'>
+      <inertial>
+        <origin xyz='0 0 0' rpy='0 0 0'/>
+        <mass value='4.8438790e-01'/>
+        <inertia ixx='4.4901373e-03' ixy='0' ixz='0' iyy='4.5162744e-03' iyz='0' izz='9.8795277e-05'/>
+      </inertial>
+      <visual>
+        <origin xyz='0 0 -0.075' rpy='0 0.525 0'/>
+        <geometry>
+          <mesh filename='package://protobot_dog_description/meshes/leg.dae'/>
+        </geometry>
+        <material name=''>
+          <color rgba='1 1 1 1'/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz='0 0 0' rpy='0 0 0'/>
+        <geometry>
+          <mesh filename='package://protobot_dog_description/meshes/leg.stl'/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name='${prefix}_lower_link'>
+      <inertial>
+        <origin xyz='0 0 0' rpy='0 0 0'/>
+        <mass value='2.3214904e-01'/>
+        <inertia ixx='2.1519552e-03' ixy='0' ixz='0' iyy='2.1644817e-03' iyz='0' izz='4.7348888e-05'/>
+      </inertial>
+      <visual>
+        <origin xyz='0 0 -0.075' rpy='0 0.525 0'/>
+        <geometry>
+          <mesh filename='package://protobot_dog_description/meshes/leg.dae'/>
+        </geometry>
+        <material name=''>
+          <color rgba='1 1 1 1'/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz='0 0 0' rpy='0 0 0'/>
+        <geometry>
+          <mesh filename='package://protobot_dog_description/meshes/leg.stl'/>
+        </geometry>
+      </collision>
+    </link>
+  </xacro:macro>
+
+
+  <xacro:macro name='leg_joint' params='prefix *origin *axis'>
+    <joint name='${prefix}_upper_joint' type='revolute'>
+      <xacro:insert_block name='origin'/>
+      <parent link='base_link'/>
+      <child link='${prefix}_upper_link'/>
+      <xacro:insert_block name='axis'/>
+      <limit effort="5" velocity="3.6" lower="-1.5707" upper="1.5707"/>
+    </joint>
+
+    <joint name='${prefix}_lower_joint' type='continuous'>
+      <origin xyz='0 0.04 -0.15' rpy='0 0 0'/>
+      <parent link='${prefix}_upper_link'/>
+      <child link='${prefix}_lower_link'/>
+      <xacro:insert_block name='axis'/>
+      <limit effort="5" velocity="3.6"/>
+    </joint>
+  </xacro:macro>
+
+  <leg_link prefix='rf'/>
+  <leg_link prefix='lf'/>
+  <leg_link prefix='rb'/>
+  <leg_link prefix='lb'/>
+
+  <leg_joint prefix='rf'>
+    <origin xyz='0.18 -0.138 -0.025' rpy='0 0 3.141593'/>
+    <axis xyz="0 1 0" />
+  </leg_joint>
+
+  <leg_joint prefix='lf'>
+    <origin xyz='0.18 0.138 -0.025' rpy='0 0 0'/>
+    <axis xyz="0 -1 0" />
+  </leg_joint>
+
+  <leg_joint prefix='rb'>
+    <origin xyz='-0.18 -0.138 -0.025' rpy='0 0 3.141593'/>
+    <axis xyz="0 1 0" />
+  </leg_joint>
+
+  <leg_joint prefix='lb'>
+    <origin xyz='-0.18 0.138 -0.025' rpy='0 0 0'/>
+    <axis xyz="0 -1 0" />
+  </leg_joint>
+</robot>
+
+
+
+
+
