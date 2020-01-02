@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="serial_port" value="/dev/ttyACM0"/>
+  <arg name="serial_baudrate" value="9600"/>
+  <node name="protobot_dog_node" pkg="protobot_dog_bringup" type="bring_up.py" output="screen" respawn="false">
+    <param name="serial_port" value="$(arg serial_port)"/>
+    <param name="serial_baudrate" value="$(arg serial_baudrate)"/>
+  </node>
+</launch>
