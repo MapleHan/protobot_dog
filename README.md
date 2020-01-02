@@ -20,12 +20,16 @@ git clone https://github.com/MapleHan/protobot_dog.git
 1. 启动Gazebo，默认暂停仿真
 ```bash
 roslaunch protobot_dog_simulation protobot_dog_simulation.launch
+```   
+2. 启动真实狗    
+```bash
+roslaunch protobot_dog_bringup bring_up.launch
 ```
-2. 启动运动学逆解程序
+3. 启动运动学逆解程序
 ```bash
 roslaunch protobot_dog_leg_ik protobot_dog_leg_ik.launch
 ```
-3. 发布运动轨迹
+4. 发布运动轨迹
    1. 上下蹲起
    ```bash
    rosrun protobot_dog_controll simple_demo.py
