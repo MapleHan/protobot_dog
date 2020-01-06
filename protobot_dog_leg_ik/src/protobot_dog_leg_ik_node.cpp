@@ -27,8 +27,8 @@ int main(int argc, char** argv)
 	ros::init(argc,argv,"protobot_dog_leg_ik_node");
 	ros::NodeHandle node;
 	std::cout<<"name_space:"<<node.getNamespace()<<" node:protobot_dog_leg_ik_node"<<std::endl;
-	upper_joint_pub = new ros::Publisher(node.advertise<std_msgs::Float64>(node.getNamespace()+"_upper_joint_position_controller/command",10));
-	lower_joint_pub = new ros::Publisher(node.advertise<std_msgs::Float64>(node.getNamespace()+"_lower_joint_position_controller/command",10));
+	upper_joint_pub = new ros::Publisher(node.advertise<std_msgs::Float64>("upper_joint_position_controller/command",10));
+	lower_joint_pub = new ros::Publisher(node.advertise<std_msgs::Float64>("lower_joint_position_controller/command",10));
 	ros::Subscriber point_sub = node.subscribe("point",10,callback);
 	leg = new Leg((char*)node.getNamespace().c_str());
 	// leg->plotArea();
