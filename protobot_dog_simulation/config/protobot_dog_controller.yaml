@@ -4,39 +4,43 @@ joint_state_controller:
   publish_rate: 100  
 
 # Position Controllers ---------------------------------------
-rf_upper_joint_position_controller:
-  type: effort_controllers/JointPositionController
-  joint: rf_upper_joint
-  pid: {p: 100.0, i: 0, d: 0.05}
-rf_lower_joint_position_controller:
-  type: effort_controllers/JointPositionController
-  joint: rf_lower_joint
-  pid: {p: 100.0, i: 0, d: 0.05}
+rf:
+  upper_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: rf_upper_joint
+    pid: {p: 100.0, i: 0, d: 0.05}
+  lower_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: rf_lower_joint
+    pid: {p: 100.0, i: 0, d: 0.05}
 
-lf_upper_joint_position_controller:
-  type: effort_controllers/JointPositionController
-  joint: lf_upper_joint
-  pid: {p: 100.0, i: 0, d: 0.05}
-lf_lower_joint_position_controller:
-  type: effort_controllers/JointPositionController
-  joint: lf_lower_joint
-  pid: {p: 100.0, i: 0, d: 0.05}
+lf:
+  upper_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: lf_upper_joint
+    pid: {p: 100.0, i: 0, d: 0.05}
+  lower_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: lf_lower_joint
+    pid: {p: 100.0, i: 0, d: 0.05}
 
-rb_upper_joint_position_controller:
-  type: effort_controllers/JointPositionController
-  joint: rb_upper_joint
-  pid: {p: 100.0, i: 0, d: 0.05}
-rb_lower_joint_position_controller:
-  type: effort_controllers/JointPositionController
-  joint: rb_lower_joint
-  pid: {p: 100.0, i: 0, d: 0.05}
+rb:
+  upper_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: rb_upper_joint
+    pid: {p: 100.0, i: 0, d: 0.05}
+  lower_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: rb_lower_joint
+    pid: {p: 100.0, i: 0, d: 0.05}
 
-lb_upper_joint_position_controller:
-  type: effort_controllers/JointPositionController
-  joint: lb_upper_joint
-  pid: {p: 100.0, i: 0, d: 0.05}
-lb_lower_joint_position_controller:
-  type: effort_controllers/JointPositionController
-  joint: lb_lower_joint
-  pid: {p: 100.0, i: 0, d: 0.05}
+lb:
+  upper_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: lb_upper_joint
+    pid: {p: 100.0, i: 0, d: 0.05}
+  lower_joint_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: lb_lower_joint
+    pid: {p: 100.0, i: 0, d: 0.05}
 
