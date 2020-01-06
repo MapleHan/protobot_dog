@@ -1,0 +1,23 @@
+<?xml version='1.0'?>
+<launch>
+  <node name='leg1_ik_node' pkg='protobot_dog_leg_ik' type='protobot_dog_leg_ik_node' output="screen">
+    <remap from="point" to="rf/point"/>
+    <remap from="/lower_joint_position_controller/command" to="/rf/lower_joint_position_controller/command"/>
+    <remap from="/upper_joint_position_controller/command" to="/rf/upper_joint_position_controller/command"/>
+  </node>
+  <node name='leg2_ik_node' pkg='protobot_dog_leg_ik' type='protobot_dog_leg_ik_node' output="screen">
+    <remap from="point" to="lf/point"/>
+    <remap from="/lower_joint_position_controller/command" to="/lf/lower_joint_position_controller/command"/>
+    <remap from="/upper_joint_position_controller/command" to="/lf/upper_joint_position_controller/command"/>
+  </node>
+  <node name='leg3_ik_node' pkg='protobot_dog_leg_ik' type='protobot_dog_leg_ik_node' output="screen">
+    <remap from="point" to="rb/point"/>
+    <remap from="/lower_joint_position_controller/command" to="/rb/lower_joint_position_controller/command"/>
+    <remap from="/upper_joint_position_controller/command" to="/rb/upper_joint_position_controller/command"/>
+  </node>
+  <node name='leg4_ik_node' pkg='protobot_dog_leg_ik' type='protobot_dog_leg_ik_node' output="screen">
+    <remap from="point" to="lb/point"/>
+    <remap from="/lower_joint_position_controller/command" to="/lb/lower_joint_position_controller/command"/>
+    <remap from="/upper_joint_position_controller/command" to="/lb/upper_joint_position_controller/command"/>
+  </node>
+</launch>
