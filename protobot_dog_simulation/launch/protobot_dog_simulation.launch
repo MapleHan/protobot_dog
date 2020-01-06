@@ -6,14 +6,14 @@
 
   <!-- load the controllers --><!-- ns="$(arg ns)"-->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
-				args="rf_upper_joint_position_controller
-							rf_lower_joint_position_controller
-							lf_upper_joint_position_controller
-							lf_lower_joint_position_controller
-							rb_upper_joint_position_controller
-							rb_lower_joint_position_controller
-							lb_upper_joint_position_controller
-							lb_lower_joint_position_controller
+				args="rf/upper_joint_position_controller
+							rf/lower_joint_position_controller
+							lf/upper_joint_position_controller
+							lf/lower_joint_position_controller
+							rb/upper_joint_position_controller
+							rb/lower_joint_position_controller
+							lb/upper_joint_position_controller
+							lb/lower_joint_position_controller
 							joint_state_controller"/>
 
   <!-- convert joint states to TF transforms for rviz, etc -->
